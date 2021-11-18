@@ -1,0 +1,25 @@
+<header>
+	<div><img src="res/背景.png"></div>
+	<div><img src="res/街景.png"></div>
+	<div><img src="res/人.png"></div>
+	<div><img src="res/树叶.png"></div>
+</header>
+<link rel="stylesheet" href="css/main.css" type="text/css">
+<script>
+	const images = document.querySelectorAll('header> div >img')
+	
+	document.querySelector('header').addEventListener('mousemove',(e)) =>{
+		let percentage = e.clientX / window.outerWidth
+		let offset = 10*percentage
+		let blur = 20
+		
+		for(let[index,image] of images.entries()){
+			offset *= 1.3
+			
+			let blurValue = (Math.pow((index / images.length - percentage), 2) * blur)
+			
+			images.style.setproperty('--offset',`${offset}px`)
+			images.style.setproperty('--blur',`${blurValue}px`)
+		}
+	}
+</script>
